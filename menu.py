@@ -130,19 +130,20 @@ while place_order:
                 # 4. Check if the menu selection is in the menu items
                 if menu_selection in menu_items.keys():
                     # Store the item name as a variable
-                    menu_selection = menu_items[int(menu_item_number)]
+                    menu_item_name = menu_items[int(menu_selection)]
 
                     # Ask the customer for the quantity of the menu item
-                    menu_item_quantity = input("How many of your selection would you like to order: ")
+                    menu_item_quantity = input(f"How many of the menu item would you like to order.  The quantity will default to 1 if your input is not valid: ")
 
                     # Check if the quantity is a number, default to 1 if not
                     if menu_item_quantity.isdigit():
 
                     # Add the item name, price, and quantity to the order list
                         order_list.append({
-                            "item_name":menu_selection
+                            "item name and price":menu_item_name,
+                            "quantity":menu_item_quantity
                         })
-                
+                        print(order_list)  
                     # Tell the customer that their input isn't valid
                 else:
                     print(f"{menu_selection} was not a valid choice.")
@@ -161,20 +162,27 @@ while place_order:
         keep_ordering = input("Would you like to keep ordering? (Y)es or (N)o ")
 
         # 5. Check the customer's input
-
+        match keep_ordering.lower():
+            # Customer chose yes
+            case 'y':
                 # Keep ordering
+                place_order = True
 
                 # Exit the keep ordering question loop
-
+                break
+            case 'n':
                 # Complete the order
-
+                place_order = False
                 # Since the customer decided to stop ordering, thank them for
                 # their order
+                print("Thank you for placing your order.")
 
                 # Exit the keep ordering question loop
+                break
 
-
+            case _:
                 # Tell the customer to try again
+                print("I don't understand the information you have entered.  Please try again")
 
 
 # Print out the customer's order
