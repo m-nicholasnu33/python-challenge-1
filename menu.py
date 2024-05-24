@@ -219,3 +219,9 @@ for Order_Details in range(len(order_list)):
 # 11. Calculate the cost of the order using list comprehension
 # Multiply the price by quantity for each item in the order list, then sum()
 # and print the prices.
+Total_Price = [float(Price) * int(Quantity) for extended_price in order_list]
+print(f"Total Price is {Total_Price:.2f}")
+
+
+
+
